@@ -7,7 +7,7 @@ function NavBar() {
         <div className="flex-none">
         </div>
         <div className="flex-1">
-          <Link to="/" className="text-xl normal-case btn btn-ghost">daisyUI</Link>
+          <Link to="/" className="text-xl normal-case btn btn-ghost">หน้าแรก</Link>
         </div>
         <div className="flex-none">
           <div className="flex items-center justify-center gap-4">
