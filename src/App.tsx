@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="h-full bg-base-100">
+        <div className="h-full bg-base-200">
           <NavBar />
           <div className="flex h-[90dvh]">
             <SideBar />
