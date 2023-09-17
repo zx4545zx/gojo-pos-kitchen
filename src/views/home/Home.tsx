@@ -3,7 +3,7 @@ import CardOrder from "../../components/home/CardOrder"
 import CardTotalOrder from "../../components/home/CardTotalOrder";
 import { getOrder } from "../../api/getOrder";
 import { Order } from "../../models/order-model";
-// import tableTotalOrder from "../../components/home/tableTotalOrder";
+
 
 function Home() {
   const [orders, setOrders] = useState<Order[] | undefined>([])
