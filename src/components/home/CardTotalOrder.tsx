@@ -1,5 +1,5 @@
 
-import { Order } from "../../models/order-model"
+import { Order, PriceList } from '../../models/order-model';
 type OrderProps = {
   data: Order;
 }
@@ -8,66 +8,30 @@ function CardTotalOrder(props: OrderProps) {
   return (
     <>
       {/* <div></div> use */}
-      <div className=" flex">
-        {data.orderDetail != null &&
-          data.orderDetail.map((v) => (
-            <div className="flex">
-             <div> <input type="checkbox"></input>
-             {v.priceList != null && v.priceList.food.name}
-             </div>
-             
-              <div>  {v.optionDetail.map((i) => (
-                <div
-                  className="text-[#5F5F5F] "
-                  key={i.optionDetail.name}
-                >
-                  {i.optionDetail.name}
-                </div>
-              ))}</div>
-              <div>{v.priceList != null && v.priceList.name}</div>
+      <div className='px-2'>
+        <div>{data.orderDetail != null && data.orderDetail.map((v)=>(
+        <>
+        <div className='grid grid-cols-3 '>
 
-            </div>
-          ))
-        }
+          <div className='flex'>
+            <div className='ml-3 text-[#ED7E46]'><input type='checkbox'></input></div>
+          <div className='flex gap-2'>
+          <div className='ml-3 text-[#ED7E46]'>x {v.qty}</div>
+            <div>{v.priceList != null && v.priceList.food.name}</div>
+          </div>
+          </div>
+
+        <div className='grid grid-cols-2 text-sm py-1 text-[#5F5F5F]'>
+          <div>{v.optionDetail.map((i)=>(i.optionDetail.name))}</div>
+          <div>{v.priceList.name}</div>
+        </div>
+
+        <div className='flex justify-end p-1 text-xs py-1 text-[#0198DD]'>{data.table != null && data.table.map((v) => (<>{v.name}-{v.seat}</>))}</div>
+        </div>
+        </>))}
+        </div>
       </div>
-      <table className="w-full bg-white rounded-xl">
-        <tbody>
-          {data.orderDetail != null &&
-            data.orderDetail.map((v) => (
-              <tr key={v.id}>
-                <td>
-                  <input
-                    type="checkbox"
-                  />
-                </td>
-                <td className="text-[#ED7E46]">x{v.qty}</td>
-                <td>{v.priceList != null && v.priceList.food.name}</td>
-                <td>
-                  {v.optionDetail.map((i) => (
-                    <div
-                      className="text-[#5F5F5F] "
-                      key={i.optionDetail.name}
-                    >
-                      {i.optionDetail.name}
-                    </div>
-                  ))}
-                </td>
-                <td className="text-[#5F5F5F] ">
-                  {v.priceList != null && v.priceList.name}
-                </td>
-                {data.table != null &&
-                  data.table.map((tableItem) => (
-                    <td
-                      className="text-xs text-[#0198DD] "
-                      key={tableItem.name}
-                    >
-                      {tableItem.name} - {tableItem.seat}
-                    </td>
-                  ))}
-              </tr>
-            ))}
-        </tbody>
-      </table>
+
     </>
   )
 }
